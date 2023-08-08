@@ -44,9 +44,12 @@ $array1[$array.length -1]                                           ##returns th
 $jagarray = "joe", "jim, "jan", (1, ('apple', 'pear'), 3), "jay"    ##array within an array
 $jagarray[3][0]                                                     ##would call 1 from the array above##
 
-
-
-
+$mylist = @{First = "John"; Last = "Doe"; Mid = "Bon"; Age = 35}    ##Creates a dictionary containing the values listed within
+$mylist["Last"]                                                     ##Returns the value of last within the dictionary
+$mylist.First                                                       ##returns the value of First whithout
+$mylist["First", "Mid", "Last"]                                     ##
+$mylist.values                                                      ##returns all of the values contained within the dictionary
+$mylist["keys"]
 
 
 
@@ -118,3 +121,65 @@ Replace the variables in text with their values in the following format:
 write-host -nonewline $var1 / $var2 = $quo
 
 ##DAY 2
+Create an array containing a range with a random starting and stopping point. The starting point will be a random number from -10 through 0. The ending point will be a random number from 1 through 20.
+  $a= get-random -minimum -10 -maximum 0
+  $b= get-random -minimum 1 -maximum 20
+  $c= $a..$b
+Create a variable that contains the contents of the array in reverse
+  echo [array]::Reverse($c)
+
+Create two empty hash tables with the following names:
+
+employee1
+
+employee2
+
+Using the following table of key-value pairs, apply each key-value to the empty hash tables.
+
+Table 1. keys and values
+First	Last	ID	Job
+Mary
+
+Hopper
+
+001
+
+Software Developer
+
+John
+
+Williams
+
+002
+
+Web Developer
+
+The keys on the first row of the table while the values are on the first column of the table
+
+Now add a new key called Username which holds a contraction of the employee’s first initial then last name then ID. (i.e. mhopper001).
+
+Mary got promoted to "Software Lead" so the job key for Mary needs to be changed to "Software Lead"
+
+Create a new hash table called "employee3" that contains the following values with the respective keys.
+
+Table 2. employee3
+First	Last	ID	Job
+Alex
+
+Moran
+
+003
+
+Software Developer
+
+Add a new key called "Status" that holds the values:
+
+Table 3. Status
+Mary	John	Alex
+Management
+
+Intermediate
+
+Entry Level
+
+Make sure you use both dot notation and square brackets to manipulate your hash tables.
