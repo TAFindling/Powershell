@@ -2,6 +2,7 @@
 xfreerdp /u:student /v:10.50.42.187 -dynamic-resolution +glyph-cache +clipboard
 
 #COMMANDS
+##DAY 1
   get-command                                                       ##lists all commands##
   get-verb                                                          ##lists all verbs##
   get-command -verb get                                             ##lists all commands with verb get##
@@ -28,10 +29,20 @@ xfreerdp /u:student /v:10.50.42.187 -dynamic-resolution +glyph-cache +clipboard
   get-process | get-member                                          ## ##
   read-host                                                         ##prompts the user for input##
 
+##DAY 2
+$x = get-process
+$a = "cat dog"
+($x).gettype()                                                      ##returns the variable type of the called variable##
+$x -is [array]                                                      ##tests if the variable is of a certain item type, returns true/false##
 
+$x.count                                                            ##returns the number of items in the output##
+$array1 = 1,(get-date),"dog",8,7
+$array = @()                                                        ##creates an empty array##
+$arrayq[2..4]                                                       ##returns all items in the range of the index positions noted
+$array1[$array.length -1]                                           ##returns the number of elements in the array
 
-
-
+$jagarray = "joe", "jim, "jan", (1, ('apple', 'pear'), 3), "jay"    ##array within an array
+$jagarray[3][0]                                                     ##would call 1 from the array above##
 
 
 
