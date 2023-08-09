@@ -38,7 +38,7 @@ $x -is [array]                                                      ##tests if t
 $x.count                                                            ##returns the number of items in the output##
 $array1 = 1,(get-date),"dog",8,7
 $array = @()                                                        ##creates an empty array##
-$arrayq[2..4]                                                       ##returns all items in the range of the index positions noted
+$array1[2..4]                                                       ##returns all items in the range of the index positions noted
 $array1[$array.length -1]                                           ##returns the number of elements in the array
 
 $jagarray = "joe", "jim, "jan", (1, ('apple', 'pear'), 3), "jay"    ##array within an array
@@ -50,7 +50,7 @@ $mylist.First                                                       ##returns th
 $mylist["First", "Mid", "Last"]                                     ##
 $mylist.values                                                      ##returns all of the values contained within the dictionary
 $mylist["keys"]
-
+#addi#c
 
 
 #EXAMPLES
@@ -183,3 +183,73 @@ Intermediate
 Entry Level
 
 Make sure you use both dot notation and square brackets to manipulate your hash tables.
+
+$employee1 = [ordered]@{}
+$employee2 = [ordered]@{}
+
+$emplyee1.First = "Mary"
+$employee1["Last"] = "Hopper"
+$employee1.ID = "001"
+$employee1["Job"] = "Software Developer"
+$employee1.Username = "mhopper001"
+$employee1.Job = "Software Lead"
+$employee1.Status = "Management"
+
+$emplyee2.First = "John"
+$employee2["Last"] = "Williams"
+$employee2.ID = "002"
+$employee2["Job"] = "Web Developer"
+$employee2.Username = "jwilliams002"
+$employee2.Status = "Intermediate"
+
+$emplyee3.First = "Alex"
+$employee3["Last"] = "Moran"
+$employee3.ID = "003"
+$employee3["Job"] = "Software Developer"
+$employee3.Username = "amoran003"
+$employee3.Status = "Entry Level"
+
+Display the start time of the earliest and latest running processes
+  Get-Process | Sort-Object starttime | Select-Object -First 1 -Last 1 | ft processname, starttime
+Identify a cmdlet that returns the current date and time then using this cmdlet and Select-object, display only the current day of the week
+  Get-Date | ft DayofWeek
+Identify a cmdlet that displays a list of installed hotfixes.
+  get-hotfix
+Extend the expression to sort the list by install date, and display only the install date and hotfix ID.
+  Get-HotFix | Sort-Object -Property InstalledOn | ft InstalledOn, HotFixID
+Extend the expression further, but this time sort by description, include description, hotfix ID, and install Date.
+  Get-HotFix | Sort-Object -Property Description | ft Description, HotFixID, InstalledOn
+
+Create a custom object that contains information about the host system using the following:
+
+Win32_ComputerSystem
+
+Win32_BIOS
+
+Win32_OperatingSystem
+
+Win32_LogicalDisk
+
+Use the cmdlet Get-WmiObject to obtain the needed information
+
+Store the objects results into variables to be used in the custom object
+
+The custom object will only contain properties not methods
+
+The final output of this exercise should look like the following:
+
+Endstate
+ComputerName    : DESKTOP-5KJDVS2
+OperatingSystem : Microsoft Windows 10 Pro
+Version         : 10.0.17134
+Manufacturer    : Dell Inc.
+Disks           : {\\DESKTOP-                          5KJDVS2\root\cimv2:Win32_LogicalDisk.DeviceID="C:",
+                  \\DESKTOP-5KJDVS2\root\cimv2:Win32_LogicalDisk.DeviceID="D:"}
+
+$ComputerInformation = [PSCustomObject]@{
+    "ComputerName" = (Get-WmiObject Win32_ComputerSystem).name
+    "OperatingSystem" = (get-ciminstance win32_operatingsystem).Caption
+    "Version" = (Get-WmiObject Win32_OperatingSystem).Version
+    "Manufacturer" = (Get-WmiObject win32_BIOS).Manufacturer
+    "Disks" = Get-WmiObject win32_logicaldisk
+}         
