@@ -212,7 +212,7 @@ $employee3.Status = "Entry Level"
 Display the start time of the earliest and latest running processes
   Get-Process | Sort-Object starttime | Select-Object -First 1 -Last 1 | ft processname, starttime
 Identify a cmdlet that returns the current date and time then using this cmdlet and Select-object, display only the current day of the week
-  Get-Date | ft DayofWeek
+  Get-Date | Select-Object DayofWeek or (get-date).DayOfWeek
 Identify a cmdlet that displays a list of installed hotfixes.
   get-hotfix
 Extend the expression to sort the list by install date, and display only the install date and hotfix ID.
@@ -260,3 +260,43 @@ Output:
   Version         : 10.0.19045
   Manufacturer    : Microsoft Corporation
   Disks           : {\\WIN-OPS\root\cimv2:Win32_LogicalDisk.DeviceID="C:", \\WIN-OPS\root\cimv2:Win32_LogicalDisk.DeviceID="D:"}
+
+Find and extract the model number from the provided lines of text. If there isn’t a model number then display to the user that a model number wasn’t found
+
+Check both lines for model numbers and report individually the line and model number if found.
+
+Use the following variables for your script
+$line1 = "Do you have model number: MT5437 for john.doe@sharklasers.com?"
+$line2 = "What model number for john.doe@sharklasers.com?"
+Exercise Criteria
+Must use at least ONE comparison operator
+
+Must use at least ONE If Condition OR Switch Statement
+
+Reminder of options available
+Switch Statement
+If/IfElse/Else Condition
+match, contains, in, -eq, -le, etc…​
+Comparison combinations
+
+$line1 = "Do you have model number: MT5437 for john.doe@sharklasers.com?"
+$line2 = "What model number for john.doe@sharklasers"
+$val = "MT5437"
+if($line1.contains($val)){
+    write-host "$line1"
+    Write-Host "Model Number found: $val"
+}
+else{
+    Write-Host "Model Number Not Found"
+    }
+if($line2.Contains($val)){
+    write-host "$line2"
+    Write-Host "Model Number found: $val"
+}
+else{
+    Write-Host "Model Number Not Found"
+    }
+
+
+
+
