@@ -253,3 +253,10 @@ $ComputerInformation = [PSCustomObject]@{
     "Manufacturer" = (Get-WmiObject win32_BIOS).Manufacturer
     "Disks" = Get-WmiObject win32_logicaldisk
 }         
+
+Output:
+  ComputerName    : WIN-OPS
+  OperatingSystem : Microsoft Windows 10 Pro
+  Version         : 10.0.19045
+  Manufacturer    : Microsoft Corporation
+  Disks           : {\\WIN-OPS\root\cimv2:Win32_LogicalDisk.DeviceID="C:", \\WIN-OPS\root\cimv2:Win32_LogicalDisk.DeviceID="D:"}
